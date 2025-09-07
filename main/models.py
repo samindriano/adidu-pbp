@@ -11,7 +11,7 @@ class Product(models.Model):
     price = models.IntegerField()
     description = models.TextField()
     thumbnail = models.URLField(blank=True, null=True)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="sepatu lari")
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="sepatu bola")
     is_featured = models.BooleanField(default=False)
     brand = models.CharField(max_length=255)
     stock = models.IntegerField()
