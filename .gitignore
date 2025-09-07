@@ -1,0 +1,67 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+/media
+
+# Virtual environment
+.env
+.env.prod
+.env.local
+!.env.example        # contoh env boleh di-track
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Backup files
+*.bak
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# IDEs and editors
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Documentation
+/site
+
+# mypy
+.mypy_cache/
