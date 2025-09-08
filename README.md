@@ -23,12 +23,12 @@ Kedua untuk konfigurasi routing pada URL proyek, urls.py di direktori adidu_shop
 Checklist 7: Lakukan migration dulu dan commit semua perubahan. Baru di terminal ketik "git remote add pws https://pbp.cs.ui.ac.id/samuel.indriano/adidushop" dan kemudian "git push pws master". Terakhir tinggal buka "https://samuel-indriano-adidushop.pbp.cs.ui.ac.id/" dan selesai!
 
 
-2. BAGAN
+2. ![Bagan Alur App Django](bagan-django.jpg)
 
 3. File yang berisi seluruh konfigurasi aplikasi kita. Mulai dari pengaturan keamanan app, pengaturan database, dan masih banyak lainnya.
 
-4. 
+4. "makemigrations" akan membuat migrasi baru dari semua perubahan pada model, kemudian dilanjut "migrate" untuk menambahkan migrasi tersebut ke dalam database.
 
-5. 
+5. Django menggunakan arsitektur MVT, sehingga kode lebih mudah untuk diorganisir dan dijaga. Kemudian django juga memiliki object-relational mapping (ORM) sehingga bisa langsung connect ke database hanya dengan kode Python. Django juga menggunakan Django Template Language yang bisa mengirim data dari backend ke html dengan syntax sederhana.
 
 6. Tidak ada
