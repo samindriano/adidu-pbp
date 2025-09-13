@@ -2,10 +2,9 @@ import uuid
 from django.db import models
 
 class Product(models.Model):
-    CATEGORY_CHOICES = [("sepatu lari", "Sepatu Lari"),
-                        ("sepatu bola", "Sepatu Bola"),
-                        ("kaus kaki", "Kaus Kaki"),
-                        ("jersey bola", "Jersey Bola")]
+    CATEGORY_CHOICES = [("sepatu lari", "Running Shoes"),
+                        ("sepatu bola", "Football Shoes"),
+                        ("jersey bola", "Football Jersey")]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)

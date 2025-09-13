@@ -2,6 +2,14 @@ Nama : Samuel Indriano
 NPM : 2406400524
 Kelas : B
 
+## TUGAS 3
+1. Data delivery penting dilakukan karena 
+
+2. JSON lebih baik karena
+
+
+
+## TUGAS 2
 Tautan PWS: https://samuel-indriano-adidushop.pbp.cs.ui.ac.id/
 
 1. Checklist 1: Pertama bikin direktori baru bernama "adidu-pbp". Kemudian inisiasi repo baru dengan "git init". Selanjutnya saya buat repo baru "adidu-pbp" di GitHub. Lanjut saya menghubungkan repo lokal dengan repo yang di github dan melakukan clone repo github ke VS Code.
