@@ -3,11 +3,25 @@ NPM : 2406400524
 Kelas : B
 
 ## TUGAS 3
-1. Data delivery penting dilakukan karena 
+1. Data delivery penting karena kita bisa mengakses data secara langsung, menjamin akurasi data, mendeteksi adanya error, hingga validasi data.
 
-2. JSON lebih baik karena
+2. JSON lebih baik daripada XML karena JSON lebih mudah di parse dibanding XML dengan JavaScript object. JSON juga lebih populer karena lebih simpel untuk ditulis dan dibaca, lebih ringkas, dan bisa make array.
 
+3. is_valid() pada form Django berawal dari form yang menjalankan proses validasi, seperti validasi input user, validasi model, cleaning data, dan beberapa proses lainnya. Jika proses validasi nya berhasil dilewati, maka is_valid() akan return True, jika gagal maka akan return False dan error akan dikirim pada form.errors. is_valid() dibutuhkan untuk melakukan banyak proses validasi, cleaning data, memberi feedback error, dan membuat validasi yang reusable tanpa harus implementasi manual di view.
 
+4. Kita membutuhkan csrf_token untuk menjamin request datang dari user asli yang sedang login dan bukan dari request berbahaya yang dikirim penyerang. csrf_token bekerja dengan menambahkan token unik yang terdiri banyak karakter random, sehingga sulit untuk ditebak penyerang. Jika tidak ada token, penyerang dapat dengan mudah mengirim request palsu yang tidak kita ingingkan. Pengiriman request biasanya dilakukan penyerang melalui website berbahaya, dimana penyerang bisa menyisipkan request pada browser pengguna. Request juga akan dikirim bersama cookie dari browser pengguna ke server tujuan, sehingga terlihat seperti pengguna asli yang melakukannya.
+
+5. Checklist 1: Pertama, saya mengimport yang dibutuhkan, yaitu HttpResponse dan serializers. Kemudian saya membuat fungsi show_xml, show_json, show_xml_by_id, dan show_json_by_id.
+
+Checklist 2: Kemudian mengedit urls.py, yaitu dengan menambahkan import dari keempat fungsi tersebut dan juga menambahkan path url agar keempat fungsi yang sudah di import bisa diakses.
+
+Checklist 3: Pertama, tambahkan dulu function create_product dan show_product di views.py. Tidak lupa juga untuk menambahkan path url di urls.py dari kedua fungsi tersebut. Kemudian baru memodifikasi main.html dengan menambahkan button dan juga loop agar bisa menampilkan semua produk yang sudah ditambahkan. Lanjut membuat create_product.html untuk menampilkan halaman input product.
+
+Checklist 4: Saya membuat forms.py dan mengisinya dengan kode yang diperlukan, yang nantinya akan digunakan untuk menerima input data product dari pengguna. Kemudian saya mengimport ProductForm di views.py dan memodifikasi dictionary pada function show_main agar bisa menampilkan data product secara otomatis.
+
+Checklist 5: Terakhir, saya membuat product_detail.html yang akan menampilkan halaman berisi detail dari setiap product. Kemudian menambahkan url project pada CSRF_TRUSTED_ORIGINS di settings.py.
+
+6. Tidak ada
 
 ## TUGAS 2
 Tautan PWS: https://samuel-indriano-adidushop.pbp.cs.ui.ac.id/

@@ -16,6 +16,5 @@ class Product(models.Model):
     brand = models.CharField(max_length=255)
     stock = models.IntegerField()
 
-
     def __str__(self):
         return self.name
