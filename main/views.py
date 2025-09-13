@@ -11,7 +11,7 @@ def show_main(request):
         'npm' : '2406400524',
         'name': 'Samuel Indriano',
         'class': 'PBP B',
-        'products_list' : product_list,
+        'product_list' : product_list,
     }
 
     return render(request, "main.html", context)
