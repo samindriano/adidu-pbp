@@ -32,7 +32,7 @@ def show_product(request, id):
         'product': product
     }
 
-    return render(request, "create_detail.html", context)
+    return render(request, "product_detail.html", context)
 
 def show_xml(request):
     product_list = Product.objects.all()
