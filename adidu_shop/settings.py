@@ -32,7 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "samuel-indriano-adidushop.pbp.cs.ui.ac.id"]
 CSRF_TRUSTED_ORIGINS = [
-    "https://samuel-indriano-adidushop.pbp.cs.ui.ac.id/"
+    "https://samuel-indriano-adidushop.pbp.cs.ui.ac.id/",
+    "https://*.pbp.cs.ui.ac.id",
 ]
 
 # Application definition
