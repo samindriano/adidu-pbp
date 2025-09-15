@@ -23,6 +23,13 @@ Checklist 5: Terakhir, saya membuat product_detail.html yang akan menampilkan ha
 
 6. Tidak ada
 
+7. Screenshots:
+![show XML](image.png)
+![show JSON](image-1.png)
+![show XML by ID](image-2.png)
+![show JSON by ID](image-3.png)
+
+
 ## TUGAS 2
 Tautan PWS: https://samuel-indriano-adidushop.pbp.cs.ui.ac.id/
 
