@@ -17,6 +17,14 @@
   <button>Logout</button>
 </a>
 
+<a href="?filter=all">
+    <button type="button">All Products</button>
+</a>
+
+<a href="?filter=my">
+    <button type="button">My Products</button>
+</a>
+
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
 <hr>
@@ -46,4 +54,11 @@
 {% endfor %}
 
 {% endif %}
+
+{% if news.user %}
+    <p>Author: {{ news.user.username }}</p>
+{% else %}
+    <p>Author: Anonymous</p>
+{% endif %}
+
 {% endblock content %}

@@ -13,7 +13,12 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
-    product_list = Product.objects.all()
+    filter_type = request.GET.get("filter", "all")  # default 'all'
+    if filter_type == "all":
+        product_list = Product.objects.all()
+    else:
+        product_list = Product.objects.filter(user=request.user)
+
     context = {
         'npm' : '2406400524',
         'name': 'Samuel Indriano',
@@ -27,8 +32,10 @@ def show_main(request):
 def create_product(request):
     form = ProductForm(request.POST or None)
 
-    if form.is_valid() and request.method == "POST":
-        form.save()
+    if form.is_valid() and request.method == 'POST':
+        product_entry = form.save(commit = False)
+        product_entry.user = request.user
+        product_entry.save()
         return redirect('main:show_main')
 
     context = {'form': form}
