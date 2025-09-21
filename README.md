@@ -3,14 +3,43 @@ NPM : 2406400524
 Kelas : B
 ## TUGAS 4
 1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
+Django AuthenticationForm adalah suatu form yang dapat mengautentikasi atau memvalidasi status user yang sedang login. Kelebihannya adalah keamanan yang baik dan terintegrasi dengan authenticate() dan login(). Kekurangannya adalah harus melakukan banyak kustomisasi misalnya seperti pengaturan izin user untuk login, login dengan email/OTP, dan lainnya. 
 
 2. Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
+Autentikasi tugasnya melakukan verifikasi terhadap user yang login, sedangkan otorisasi tugasnya memberikan izin aktivitas bagi user setelah melakukan autentikasi. Implementasi autentikasi pada Django misalnya dengan form/view tools seperti AuthenticationForm, LoginView, LogoutView, ataupun dengan middleware seperti AuthenticationMiddleware. Sedangkan untuk implementasi otorisasi pada Django misalnya dengan dekorator seperti @login_required, @permission_required, ataupun dengan API seperti user.has_perm('app_label.action_model').
 
 3. Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
+- Session
+Kelebihan:  - Data lebih aman, karena disimpan di server sehingga tidak bisa diubah-ubah.
+            - Bisa menyimpan data dengan ukuran yang besar
+
+Kekurangan: - Membutuhkan storage pada server untuk menyimpan data.
+            - Kecepatan penyimpanan data tidak maksimal karena setiap request membutuhkan server processing.
+            - Data hilang ketika session expired atau ketika server restart.
+
+- Cookies
+Kelebihan:  - Data disimpan di browser, sehingga tidak membutuhkan storage server tambahan.
+            - Kecepatan penyimpanan data maksimal karena data disimpan pada browser pengguna.
+            - Data tidak hilang meskipun browser sudah ditutup.
+
+Kekurangan: - Keamanan tidak maksimal karena data bisa diakses client di web.
+            - Data yang bisa disimpan hanya bisa 4KB per cookie.
 
 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?
+Cookies aman dalam pengembangan web jika diimplementasi secara benar, namun tetap ada risiko potensial. Misalnya main-in-the-middle (MitM), XSS, hingga CSRF. Django bisa menangani hal tersebut dengan:
+- SESSION_COOKIE_HTTPONLY --> agar cookie tidak bisa diakses JS, mencegah XSS
+- SESSION_COOKIE_SECURE --> agar cookie hanya dikirim jika HTTPS, mencegah MitM dan CSRF.
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+- Checklist 1: Pertama, saya buat form registrasi dengan melakukan import UserCreationForm dan messages, kemudian membuat suatu fungsi di views yang berfungsi untuk menghasilkan form registrasi secara otomatis dan membuat akun pengguna ketika data di submit dari form. Kemudian membuat halaman untuk register tersebut dengan register.html dan tidak lupa untuk menambahkan path url nya.
+
+Kemudian, saya lanjut membuat untuk login dan logout dengan melakukan beberapa import yang dibutuhkan. Saya membuat fungsi login di views yang berfungsi untuk mengautentikasi pengguna yang sedang login, dan juga fungsi logout agar pengguna bisa logout. Kemudian membuat halaman login dengan login.html yang dan juga tidak lupa untuk menambahkan path url-nya.
+
+- Checklist 2: Saya menjalankan servernya di local dan kemudian melakukan register untuk 2 akun, yang kemudian saya juga tes untuk melakukan login pada ke 2 akun tersebut. Kemudian saya menambahkan 3 produk sepatu pada akun tersebut.
+
+- Checklist 3: Di models, saya melakukan import User dan menambahkan atribut baru bernama user. Kemudian melakukan modifikasi fungsi views yaitu show_main dan create_product.
+
+- Checklist 4: Saya melakukan beberapa import dan kemudian menambahkan beberapa modifikasi pada fungsi login_user, show_main, dan logout_user untuk mengatur akses data pada cookie dan juga menghapus cookie.
 
 ## TUGAS 3
 1. Data delivery penting karena kita bisa mengakses data secara langsung, menjamin akurasi data, mendeteksi adanya error, hingga validasi data.
