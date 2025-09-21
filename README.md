@@ -35,7 +35,7 @@ Cookies aman dalam pengembangan web jika diimplementasi secara benar, namun teta
 
 Kemudian, saya lanjut membuat untuk login dan logout dengan melakukan beberapa import yang dibutuhkan. Saya membuat fungsi login di views yang berfungsi untuk mengautentikasi pengguna yang sedang login, dan juga fungsi logout agar pengguna bisa logout. Kemudian membuat halaman login dengan login.html yang dan juga tidak lupa untuk menambahkan path url-nya.
 
-- Checklist 2: Saya menjalankan servernya di local dan kemudian melakukan register untuk 2 akun, yang kemudian saya juga tes untuk melakukan login pada ke 2 akun tersebut. Kemudian saya menambahkan 3 produk sepatu pada akun tersebut.
+- Checklist 2: Saya menjalankan servernya di local dan kemudian melakukan register untuk 2 akun, yang kemudian saya juga tes untuk melakukan login pada ke 2 akun tersebut. Kemudian saya menambahkan 3 produk sepatu pada setiap akun tersebut.
 
 - Checklist 3: Di models, saya melakukan import User dan menambahkan atribut baru bernama user. Kemudian melakukan modifikasi fungsi views yaitu show_main dan create_product.
 

@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
-    filter_type = request.GET.get("filter", "all")  # default 'all'
+    filter_type = request.GET.get("filter", "all")
     if filter_type == "all":
         product_list = Product.objects.all()
     else:
