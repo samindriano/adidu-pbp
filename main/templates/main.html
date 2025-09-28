@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block meta %}
-<title>Adidu Shop</title>
+<title>AdiduShop</title>
 {% endblock meta %}
 
 {% block content %}
@@ -36,8 +36,8 @@
     <!-- Product Grid -->
     {% if not product_list %}
       <div class="bg-white rounded-lg border border-stone-200 p-12 text-center">
-        <div class="w-32 h-32 mx-auto mb-4">
-          <img src="{% static 'image/no-news.png' %}" alt="No products available" class="w-full h-full object-contain">
+        <div class="w-48 h-48 mx-auto mb-1">
+          <img src="{% static 'image/product-not-found.png' %}" alt="No products available" class="w-full h-full object-contain">
         </div>
         <h3 class="text-lg font-medium text-stone-900 mb-2">No products found</h3>
         <p class="text-stone-500 mb-6">Be the first to add a product to the catalog!</p>

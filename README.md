@@ -1,6 +1,57 @@
 Nama : Samuel Indriano
 NPM : 2406400524
 Kelas : B
+
+## TUGAS 5
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+    Urutan dari prioritas tertinggi hingga terendah:
+    1. !important --> Prioritas tertinggi, akan selalu override semua selector lain.
+    2. inline styles --> contoh: <h1 style="color: pink;"> --> weight=1000
+    3. Id selectors --> contoh: #id --> weight=0100
+    4. Class, attribute, pseudo class --> contoh: .class, [type=""], :hover --> weight=0010
+    5. Element and pseudo element --> contoh: h1, ::before --> weight=0001
+    6. Universal selector and :where() --> contoh: *, where() --> weight=0000
+
+2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+    Alasan responsive web design penting:
+    1. Meningkatkan user experience
+    Website yang responsive bisa melakukan adjusting untuk ukuran layar dari user, sehingga user dapat melakukan navigasi dan interaksi pada website dengan mudah.
+    2. Kemudahan dalam maintenance
+    Karena tidak perlu untuk mengembangkan versi web berbeda untuk setiap device user yang berbeda, sehingga maintenance akan lebih mudah dan cepat.
+    3. Loading time yang cepat
+    Website yang responsive sudah mengoptimisasi resource nya, seperti gambar, CSS, dll.
+
+    Aplikasi yang sudah menerapkan responsive design: Tokopedia, karena sudah menerapkan hamburger sehingga dapat menyesuaikan tampilan untuk smartphone maupun desktop.
+
+    Aplikasi yang belum menerapkan responsive design: Scele Jadul (2014), tidak ada penyesuaian tampilan di HP sehingga sama persis seperti di desktop, navigasi tetep memanjang, dan tidak ada hamburger.
+
+3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+    Margin: Ruang kosong di luar border
+    Border: Sebuah garis batas yang mengelilingi padding dan konten
+    Padding: Ruang kosong di sekitar konten 
+
+    Implementasi ketiganya:
+    div {
+        width: 200px; 
+        border: 10px solid green; 
+        padding: 40px; 
+        margin: 15px; 
+    }
+
+4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+    Flex box adalah sistem layout 1 dimensi yang berfungsi untuk mengatur dan mengalokasikan ruang antar item dalam suatu container. Sedangkan untuk grid layout adalah sistem 2 dimensi berbasis grid, yang berfungsi untuk memudahkan pembuatan halaman web tanpa harus menggunakan float atau positioning.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+    - Checklist 1: Untuk implementasi fitur edit news, saya menambahkan fungsi edit_news di views, membuat file html bernama edit_news, melakukan routing url, dan melakukan sedikit modifikasi tombol di main.html. Proses yang mirip juga saya lakukan untuk implementasi fitur delete news.
+
+    - Checklist 2: Saya menggunakan tailwind untuk CSS framework pada aplikasi yang saya buat. Saya menyambungkan django dan tailwind dengan menambahkan script cdn tailwind di bagian head base.html.
+
+    - Checklist 3: Untuk halaman login, register, edit product, dan detail product, saya melakukan implementasi mirip dengan tutorial. Hanya saja, saya merubah palet warna nya yang tadinya gray dan green --> stone dan teal. Di detail product, saya juga mengganti warna badge category menjadi gradient, dan menambahkan harga product.
+
+    - Checklist 4: Untuk dasar dari halaman daftar product, saya melakukan implementasi yang juga mirip dengan tutorial, tapi saya melakukan beberapa modifikasi. Saya melakukan modifikasi zoom in image ketika di hover, mengganti warna badge category menjadi gradient, menebalkan brand product dan menambahkan harganya, dan terakhir menebalkan border dan shadow dari card agar tidak terlalu menyatu dengan background halaman yang putih. Saya juga sudah menambahkan gambar apabila belum ada product yang tersimpan.
+
+    - Checklist 5: Untuk menambahkan navigation bar, saya membuat file navbar.html dan mengisinya dengan kode yang diperlukan. Kemudian saya juga melakukan pentautan navbar tersebut ke main.html. Modifikasi yang saya lakukan di navbar adalah mengubah font logo "AdiduShop" dengan melakukan import google fonts API melalui base.html.
+    
 ## TUGAS 4
 1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
 Django AuthenticationForm adalah suatu form yang dapat mengautentikasi atau memvalidasi status user yang sedang login. Kelebihannya adalah keamanan yang baik dan terintegrasi dengan authenticate() dan login(). Kekurangannya adalah harus melakukan banyak kustomisasi misalnya seperti pengaturan izin user untuk login, login dengan email/OTP, dan lainnya. 
