@@ -42,7 +42,7 @@ Kelas : B
     Flex box adalah sistem layout 1 dimensi yang berfungsi untuk mengatur dan mengalokasikan ruang antar item dalam suatu container. Sedangkan untuk grid layout adalah sistem 2 dimensi berbasis grid, yang berfungsi untuk memudahkan pembuatan halaman web tanpa harus menggunakan float atau positioning.
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
-    - Checklist 1: Untuk implementasi fitur edit news, saya menambahkan fungsi edit_news di views, membuat file html bernama edit_news, melakukan routing url, dan melakukan sedikit modifikasi tombol di main.html. Proses yang mirip juga saya lakukan untuk implementasi fitur delete news.
+    - Checklist 1: Untuk implementasi fitur edit product, saya menambahkan fungsi edit_product di views, membuat file html bernama edit_product, melakukan routing url, dan melakukan sedikit modifikasi tombol di main.html. Proses yang mirip juga saya lakukan untuk implementasi fitur delete product.
 
     - Checklist 2: Saya menggunakan tailwind untuk CSS framework pada aplikasi yang saya buat. Saya menyambungkan django dan tailwind dengan menambahkan script cdn tailwind di bagian head base.html.
 
