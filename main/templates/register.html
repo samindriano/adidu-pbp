@@ -39,7 +39,7 @@
         </div>
       {% endif %}
 
-      <form method="POST" action="" class="space-y-5">
+      <form method="POST" action="" class="space-y-5" id="registerForm">
         {% csrf_token %}
         
         <div>
@@ -74,7 +74,7 @@
             class="w-full px-4 py-3 border border-stone-300 rounded focus:outline-none focus:border-teal-500 transition duration-200" 
             placeholder="Confirm your password">
         </div>
-
+        <div id="registerErrors" class="text-sm text-red-600"></div>
         <button 
           type="submit" 
           class="w-full bg-teal-600 text-white font-medium py-3 px-4 rounded hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition duration-200">
@@ -115,4 +115,32 @@
     </div>
   </div>
 </div>
+
+<script>
+function getCSRFToken() {
+  const m = document.cookie.match(/(^|;)\\s*csrftoken=([^;]+)/);
+  return m ? decodeURIComponent(m[2]) : '';
+}
+
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const errorsEl = document.getElementById('registerErrors');
+  errorsEl.textContent = '';
+
+  const res = await fetch("{% url 'main:register_ajax' %}", {
+    method: "POST",
+    headers: { "X-CSRFToken": getCSRFToken() },
+    body: new FormData(this),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    window.location.href = data.redirect;
+  } else {
+    const data = await res.json();
+    const flatErrors = Object.values(data.errors || {}).flat().join(' ');
+    errorsEl.textContent = flatErrors || 'Registration failed.';
+  }
+});
+</script>
 {% endblock content %}
