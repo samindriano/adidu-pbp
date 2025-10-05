@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_http_methods
+from django.utils.html import strip_tags
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -164,12 +165,12 @@ def delete_product(request, id):
 @csrf_exempt
 @require_POST
 def add_product_ajax(request):
-    name = request.POST.get("name")
+    name = strip_tags(request.POST.get("name"))
     price = request.POST.get("price")
-    description = request.POST.get("description")
-    thumbnail = request.POST.get("thumbnail")
+    description = strip_tags(request.POST.get("description"))
+    thumbnail = strip_tags(request.POST.get("thumbnail"))
     category = request.POST.get("category")
-    brand = request.POST.get("brand")
+    brand = strip_tags(request.POST.get("brand"))
     stock = request.POST.get("stock")
     is_featured = request.POST.get("is_featured") == 'on'  # checkbox handling
     user = request.user if request.user.is_authenticated else None
@@ -193,12 +194,12 @@ def add_product_ajax(request):
 @require_POST
 def update_product_ajax(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    product.name = request.POST.get("name")
+    product.name = strip_tags(request.POST.get("name"))
     product.price = request.POST.get("price")
-    product.description = request.POST.get("description")
-    product.thumbnail = request.POST.get("thumbnail")
+    product.description = strip_tags(request.POST.get("description"))
+    product.thumbnail = strip_tags(request.POST.get("thumbnail"))
     product.category = request.POST.get("category")
-    product.brand = request.POST.get("brand")
+    product.brand = strip_tags(request.POST.get("brand"))
     product.stock = request.POST.get("stock")
     product.is_featured = request.POST.get("is_featured") == 'on'
     product.save()
