@@ -1,4 +1,6 @@
 import datetime
+import json
+import requests
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from main.forms import ProductForm
@@ -79,6 +81,29 @@ def show_json(request):
 
     return JsonResponse(data, safe=False)
 
+
+@login_required(login_url='/login')
+def show_json_mine(request):
+    product_list = Product.objects.filter(user=request.user)
+    data = [
+        {
+            'id': product.id,
+            'name': product.name,
+            'price': product.price,
+            'description': product.description,
+            'thumbnail': product.thumbnail,
+            'category': product.category,
+            'category_display': product.get_category_display(),
+            'is_featured': product.is_featured,
+            'brand': product.brand,
+            'stock': product.stock,
+            'user_id': product.user_id,
+        }
+        for product in product_list
+    ]
+
+    return JsonResponse(data, safe=False)
+
 def show_xml_by_id(request, product_id):
    try:
        product_item = Product.objects.filter(pk=product_id)
@@ -89,7 +114,6 @@ def show_xml_by_id(request, product_id):
 
 def show_json_by_id(request, product_id):
     try:
-        # Ambil data produk dengan user terkait
         product = Product.objects.select_related('user').get(pk=product_id)
         
         data = {
@@ -106,7 +130,7 @@ def show_json_by_id(request, product_id):
             'user_username': product.user.username if product.user_id else None,
         }
         return JsonResponse(data)
-    except Product.DoesNotExist:  # [MODIFIED] ganti News → Product
+    except Product.DoesNotExist:
         return JsonResponse({'detail': 'Not found'}, status=404)
 
 
@@ -172,7 +196,7 @@ def add_product_ajax(request):
     category = request.POST.get("category")
     brand = strip_tags(request.POST.get("brand"))
     stock = request.POST.get("stock")
-    is_featured = request.POST.get("is_featured") == 'on'  # checkbox handling
+    is_featured = request.POST.get("is_featured") == 'on'
     user = request.user if request.user.is_authenticated else None
 
     new_product = Product(
@@ -233,3 +257,52 @@ def register_ajax(request):
         form.save()
         return JsonResponse({'redirect': reverse("main:login")})
     return JsonResponse({'errors': form.errors}, status=400)
+
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        name = strip_tags(data.get("name", ""))
+        description = strip_tags(data.get("description", ""))
+        thumbnail = data.get("thumbnail", "")
+        category = data.get("category", "")
+        is_featured = data.get("is_featured", False)
+        brand = strip_tags(data.get("brand", ""))
+        price = data.get("price", 0)
+        stock = data.get("stock", 0)
+        user = request.user
+
+        new_product = Product(
+            user=user,
+            name=name,
+            description=description,
+            thumbnail=thumbnail,
+            category=category,
+            is_featured=is_featured,
+            brand=brand,
+            price=price,
+            stock=stock,
+        )
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+
+    return JsonResponse({"status": "error"}, status=401)
+
+
+def proxy_image(request):
+    image_url = request.GET.get('url')
+    if not image_url:
+        return HttpResponse('No URL provided', status=400)
+
+    try:
+        response = requests.get(image_url, timeout=10)
+        response.raise_for_status()
+
+        return HttpResponse(
+            response.content,
+            content_type=response.headers.get('Content-Type', 'image/jpeg')
+        )
+    except requests.RequestException as e:
+        return HttpResponse(f'Error fetching image: {str(e)}', status=500)

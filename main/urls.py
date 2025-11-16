@@ -7,6 +7,7 @@ urlpatterns = [
     path('', show_main, name='show_main'),
     path('xml/', show_xml, name='show_xml'),
     path('json/', show_json, name='show_json'),
+    path('json/mine/', show_json_mine, name='show_json_mine'),
     path('xml/<str:product_id>/', show_xml_by_id, name='show_xml_by_id'),
     path('json/<str:product_id>/', show_json_by_id, name='show_json_by_id'),
     path('create-product/', create_product, name='create_product'),
@@ -21,4 +22,6 @@ urlpatterns = [
     path('delete-product-ajax/<uuid:product_id>/', delete_product_ajax, name='delete_product_ajax'),
     path('login-ajax/', login_ajax, name='login_ajax'),
     path('register-ajax/', register_ajax, name='register_ajax'),
+    path('proxy-image/', proxy_image, name='proxy_image'),
+    path('create-flutter/', create_product_flutter, name='create_product_flutter'),
 ]
